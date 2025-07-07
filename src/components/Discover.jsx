@@ -3,15 +3,20 @@ import React, { useState } from 'react';
 import { showMovie } from '../rtk_Querys/ShowMovieReducer/showMovie';
 import Pagination from './Pagination';
 import Language from './Language';
+import MovieGeners from './MovieGeners';
+import { Link } from 'react-router';
 
 const Discover = () => {
 
      const [page , setPage] = useState(1)
      const [lang,setLang]=useState("")
+     const [list,setList]=useState([])
 
-  const { data, isLoading, error } = showMovie.useAllMovieQuery({ endpoint: "discover/movie", page: page , lang:lang });
+  const { data, isLoading, error } = showMovie.useAllMovieQuery({ endpoint: "discover/movie", page: page , lang:lang,list:list });
 
     console.log(data)
+
+    console.log(list)
 
   if (isLoading) return <div>Loading movies...</div>;
   if (error) return <div>Failed to load movies.</div>;
@@ -20,9 +25,11 @@ const Discover = () => {
   return (
 <>
 <Language  setLang={setLang}/>
+  <MovieGeners setList={setList} list={list}/>
 
 
-    <div className="max-w-7xl mx-auto mt-10 grid grid-cols-4 gap-6">
+<h1 className="font-bold text-white text-center text-2xl">Discover</h1>
+    <div className="max-w-7xl mx-auto mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
       {data.results.map((ele) => (
         <div key={ele.id} className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
           <a >
@@ -42,10 +49,12 @@ const Discover = () => {
             </div>
             <div className="flex items-center justify-between">
               <span className="text-sm text-gray-500 dark:text-gray-400">Release: {ele.release_date}</span>
-              <a
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+             <Link to={`/Eachdiscover/${ele.id}`}   className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+              
+              
                 View
-              </a>
+             
+             </Link>
             </div>
           </div>
         </div>
