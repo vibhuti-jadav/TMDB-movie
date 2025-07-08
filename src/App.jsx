@@ -6,6 +6,7 @@ import Allcomponent from './components/Allcomponent'
 import Discover from './components/Discover'
 import Eachdiscover from './components/Eachdiscover'
 import { Route, Routes } from 'react-router'
+import Recomandation from './components/Recomandation'
 
 function App() {
 
@@ -15,10 +16,11 @@ function App() {
 
      
       <Routes>
-        {/* <Route path="/" element={<Discover />} /> */}
+        <Route path="/" element={<Discover />} />
         <Route path="/Eachdiscover/:id" element={<Eachdiscover />} />
       </Routes>
     
+      {/* <Recomandation/> */}
     </>
   )
 }

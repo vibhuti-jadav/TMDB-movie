@@ -10,5 +10,8 @@ export const showMovie = createApi({
       query: ({ endpoint, page = 1,lang="",list="" }) =>
         `/${endpoint}?api_key=${API_KEY}&with_original_language=${lang}&page=${page}&with_genres=${list && list.join(",")}`,
     }),
+     movieVideo: build.query({
+      query: (id) => `/movie/${id}/videos?api_key=${API_KEY}&language=en-US`,
+    }),
     })
 })

@@ -8,11 +8,11 @@ import Slider from './Slider'
 const Allcomponent = () => {
   return (
     <>
-     <Navbar/>
+     {/* <Navbar/> */}
 
-     <Discover/>
-    <Recomandation/>
-    <Slider/>
+     {/* <Discover/> */}
+    {/* <Recomandation/> */}
+    {/* <Slider/> */}
     </>
    
   )
