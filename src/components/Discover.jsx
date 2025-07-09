@@ -31,9 +31,7 @@ const Discover = () => {
 <Language  setLang={setLang}/>
   <MovieGeners setList={setList} list={list}/>
     
-     {/* <button onClick={toggleType} style={{ marginBottom: "1rem" }}>
-         {type === "movie" ? "TV Shows" : "Movies"}
-      </button> */}
+
 
 <h1 className="font-bold text-white text-center text-2xl">Discover</h1>
     <div className="max-w-7xl mx-auto mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
