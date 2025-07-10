@@ -19,7 +19,6 @@ const EachDiscover = () => {
   console.log(data)
   const [isModalOpen, setModalOpen] = useState(false);
 
-
   if (isLoading || videoLoading) return <p className="text-white">Loading movie details...</p>;
   if (isError || !data) return <p className="text-white">Error loading movie details.</p>;
 
@@ -52,7 +51,6 @@ const EachDiscover = () => {
           Plans
         </button>
       </div>
-
 
       <div className=' mt-10 ml-10 mr-10 '>
         {/* <img
@@ -151,8 +149,8 @@ const EachDiscover = () => {
 
         </div>  
 
-        <div className='grid grid-cols-3 gap-0 mt-5 '>
-          <a className="block w-145 p-6 bg-[#7a7977] text-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <div className='grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-0 mt-5 '>
+          <a className="block w-120 p-6 bg-[#7a7977] text-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
 
             <h5 className="text-[18px] font-bold tracking-tight text-gray-900 dark:text-white">Watch Offline</h5>
             <h5 className="mb-3 text-[15px] font-bold tracking-tight text-gray-900 dark:text-white">Available to download</h5>
@@ -170,7 +168,6 @@ const EachDiscover = () => {
               {data.spoken_languages.map((ele)=>(
               
                    <h5 key={ele.id} className="mb-3 text-[15px] font-bold tracking-tight text-gray-900 dark:text-white">{ele.name}</h5>
-
               ))
               
               }
@@ -178,7 +175,7 @@ const EachDiscover = () => {
               
           </a>
 
-          <a className="block w-145 p-6 bg-[#7a7977] text-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+          <a className="block w-120 p-6 bg-[#7a7977] text-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
 
             <h5 className="text-[18px] font-bold tracking-tight text-gray-900 dark:text-white">Audio</h5>
             {data.spoken_languages.map((ele)=>(
@@ -206,7 +203,7 @@ const EachDiscover = () => {
 
      
 
-          <a className="block w-145 p-6 bg-[#7a7977] text-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+          <a className="block w-120 p-6 bg-[#7a7977] text-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                   
         {/* <p className="text-[18px] font-bold tracking-tight text-gray-900 dark:text-white">Cast</p>
 <p className="mt-2 text-gray-700 dark:text-gray-300">

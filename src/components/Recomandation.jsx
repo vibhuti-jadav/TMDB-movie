@@ -12,9 +12,6 @@
 //     <div className='max-w-7xl mx-auto mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'>
 //         {
 //             data?.results.map((ele)=>(
-                
-
-  
 
 // <div key={ele.id} className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
 //     <a href="#">
