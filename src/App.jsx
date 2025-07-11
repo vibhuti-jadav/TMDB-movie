@@ -4,9 +4,9 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Allcomponent from './components/Allcomponent'
 import Discover from './components/Discover'
-import Eachdiscover from './components/Eachdiscover'
 import { Route, Routes } from 'react-router'
 import Recomandation from './components/Recomandation'
+import EachDiscover from './components/Eachdiscover'
 
 function App() {
 
@@ -17,10 +17,12 @@ function App() {
      
       <Routes>
         <Route path="/" element={<Discover />} />
-        <Route path="/Eachdiscover/:id" element={<Eachdiscover />} />
+        <Route path="/discover/:type/:id" element={<EachDiscover />} />
+
       </Routes>
     
       {/* <Recomandation/> */}
+
     </>
   )
 }

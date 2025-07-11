@@ -49,16 +49,15 @@
 import '../App.css'
 import React, { useEffect, useRef } from 'react';
 import { showMovie } from '../rtk_Querys/ShowMovieReducer/showMovie';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const Recomandation = () => {
   const { data } = showMovie.useAllMovieQuery({ endpoint: "movie/541671/recommendations" });
 
-  // Split data.results into two groups of 5
+ 
   const firstFive = data?.results.slice(0, 10) || [];
   const secondFive = data?.results.slice(10, 20) || [];
 
-  // Custom hook to add slider dragging logic to a ref
   function useSliderDrag(ref) {
     useEffect(() => {
       const slider = ref.current;
@@ -190,11 +189,11 @@ const Recomandation = () => {
     }, [ref]);
   }
 
-  // Create two refs for two sliders
+ 
   const sliderRef1 = useRef(null);
   const sliderRef2 = useRef(null);
 
-  // Add slider drag functionality to both sliders
+ 
   useSliderDrag(sliderRef1);
   useSliderDrag(sliderRef2);
 
@@ -250,14 +249,14 @@ const Recomandation = () => {
     <>
       <h1 className="font-bold text-white text-center text-2xl mb-6">Recommendation</h1>
 
-      {/* First slider */}
+ 
       <div className="slider mb-10" ref={sliderRef1}>
         <div className="slider-content" id="sliderContent1">
           {renderSliderItems(firstFive, 0)}
         </div>
       </div>
 
-      {/* Second slider */}
+  
       <div className="slider" ref={sliderRef2}>
         <div className="slider-content" id="sliderContent2">
           {renderSliderItems(secondFive, 5)}

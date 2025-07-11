@@ -1,37 +1,47 @@
-import React, { useState } from 'react'
-import { showMovie } from '../rtk_Querys/ShowMovieReducer/showMovie';
 
-const Language = ({setLang}) => {
- const [open, setOpen]=useState(true)
-    const { data } = showMovie.useAllMovieQuery({ endpoint: "configuration/languages"});
-    
- 
-        console.log(data)
-   
- 
-    return (
-    
-    <>
-    <button onClick={()=>setOpen(!open)}  className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Dropdown button <svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-       <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4"/>
-      </svg>
+import { useState } from "react";
+import { showMovie } from "../rtk_Querys/ShowMovieReducer/showMovie";
+
+ const Language = ({ setLang, lang }) => {
+  const [open, setOpen] = useState(false);
+ const [selectedLang, setSelectedLang] = useState(null);
+  const { data } = showMovie.useAllMovieQuery({ endpoint: "configuration/languages" });
+
+  const handleSelect = (iso) => {
+    setLang(iso);
+     setSelectedLang(iso);
+    setOpen(false);
+  };
+
+  // Find selected language name to show on button
+  const selectedLangName = data?.find((l) => l.iso_639_1 === selectedLang)?.english_name;
+
+  return (
+    <div className="relative inline-block text-left">
+      <button onClick={() => setOpen(!open)} /* ...other button props */>
+        {selectedLangName || "Select Language"}
+        {/* arrow icon */}
       </button>
 
+      {open && (
+        <div className="z-10 absolute mt-2 w-44 max-h-60 overflow-y-auto bg-white /* ... */">
+          <ul>
+            {data && data.map((ele) => (
+              <li key={ele.iso_639_1}>
+                <button
+                  onClick={() => handleSelect(ele.iso_639_1)}
+                  className={`block w-full text-left px-4 py-2 cursor-pointer
+                    ${lang === ele.iso_639_1 ? "font-bold" : ""}`}
+                >
+                  {ele.english_name}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+};
 
-<div  className={`z-10 ${open?`hidden`:`visible`} bg-white h-50 overflow-y-scroll divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700`}>
-
-    <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-        {data && data.map((ele)=>(
-        <li key={ele.id}>
-        <a  onClick={()=>setLang(ele.iso_639_1)} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{ele.english_name}</a>
-      </li>
-        ))}
-
-    </ul>
-</div>
-    </>
-
-  )
-}
-
-export default Language
+ export default Language;
