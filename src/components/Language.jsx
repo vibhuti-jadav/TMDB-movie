@@ -2,14 +2,14 @@
 import { useState } from "react";
 import { showMovie } from "../rtk_Querys/ShowMovieReducer/showMovie";
 
- const Language = ({ setLang, lang }) => {
+const Language = ({ setLang, lang }) => {
   const [open, setOpen] = useState(false);
- const [selectedLang, setSelectedLang] = useState(null);
+  const [selectedLang, setSelectedLang] = useState(null);
   const { data } = showMovie.useAllMovieQuery({ endpoint: "configuration/languages" });
 
   const handleSelect = (iso) => {
     setLang(iso);
-     setSelectedLang(iso);
+    setSelectedLang(iso);
     setOpen(false);
   };
 
@@ -44,4 +44,4 @@ import { showMovie } from "../rtk_Querys/ShowMovieReducer/showMovie";
   );
 };
 
- export default Language;
+export default Language;

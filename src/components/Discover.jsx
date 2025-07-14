@@ -12,7 +12,7 @@ import { toggleType } from '../reduxToolkit/reducers/typeSlice';
 
 const Discover = () => {
 
-   const [lang, setLang] = useState(() => localStorage.getItem('selectedLang') || "");
+  const [lang, setLang] = useState(() => localStorage.getItem('selectedLang') || "");
 
   // Whenever lang changes, update localStorage
   useEffect(() => {
@@ -25,12 +25,13 @@ const Discover = () => {
   const [page, setPage] = useState(1);
   const [list, setList] = useState([]);
 
-  const { data, isLoading, error } = showMovie.useAllMovieQuery({ endpoint: `discover/${type}`,page: page,lang: lang,list: list,
+  const { data, isLoading, error } = showMovie.useAllMovieQuery({
+    endpoint: `discover/${type}`, page: page, lang: lang, list: list,
   });
 
   const handleToggleType = () => {
     dispatch(toggleType());
-    setPage(1); 
+    setPage(1);
   };
 
   if (isLoading) return <div>Loading movies...</div>;

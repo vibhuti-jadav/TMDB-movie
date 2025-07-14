@@ -12,11 +12,11 @@ const typeSlice = createSlice({
   reducers: {
     toggleType: (state) => {
       state.type = state.type === 'movie' ? 'tv' : 'movie';
-      localStorage.setItem('selectedType', state.type);  // update localStorage here
+      localStorage.setItem('selectedType', state.type);  
     },
     setType: (state, action) => {
       state.type = action.payload;
-      localStorage.setItem('selectedType', state.type);  // update localStorage here
+      localStorage.setItem('selectedType', state.type);  
     },
   },
 });
