@@ -9,13 +9,13 @@ const Allcomponent = () => {
   return (
     <>
       {/* <Navbar/> */}
-
       {/* <Discover/> */}
       {/* <Recomandation/> */}
       {/* <Slider/> */}
-    </>
+    </>        
 
   )
 }
 
 export default Allcomponent
+       

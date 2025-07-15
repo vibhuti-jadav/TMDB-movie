@@ -13,18 +13,17 @@ const Language = ({ setLang, lang }) => {
     setOpen(false);
   };
 
-  // Find selected language name to show on button
   const selectedLangName = data?.find((l) => l.iso_639_1 === selectedLang)?.english_name;
 
   return (
-    <div className="relative inline-block text-left">
-      <button onClick={() => setOpen(!open)} /* ...other button props */>
-        {selectedLangName || "Select Language"}
-        {/* arrow icon */}
+    <div className="relative inline-block text-white rounded border my-3 mx-5 px-5 text-left">
+      <button onClick={() => setOpen(!open)} >
+        {selectedLangName || "Select Language 🔽"} 
+   
       </button>
 
       {open && (
-        <div className="z-10 absolute mt-2 w-44 max-h-60 overflow-y-auto bg-white /* ... */">
+        <div className="z-10 absolute mt-2 w-44 max-h-60 overflow-y-auto bg-black ">
           <ul>
             {data && data.map((ele) => (
               <li key={ele.iso_639_1}>
