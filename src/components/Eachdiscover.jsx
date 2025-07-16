@@ -257,10 +257,6 @@ const EachDiscover = () => {
 
         </div>
 
-
-
-
-
         <h1 className='text-2xl text-white mt-5 '>Cast</h1>
         <p className="text-[18px] font-bold tracking-tight text-gray-900 dark:text-white mb-4">
           Cast
