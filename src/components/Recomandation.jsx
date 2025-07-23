@@ -203,7 +203,7 @@ const Recomandation = () => {
       return (
         <div key={ele.id} className="container">
           <div className="img-container">
-            <Link to={`/Eachdiscover/${ele.id}`}>
+            <Link to={`/discover/${ele.media_type}/${ele.id}`}>
               <img
                 src={`https://image.tmdb.org/t/p/w500${ele.backdrop_path}`}
                 alt={ele.original_title}
@@ -259,7 +259,7 @@ const Recomandation = () => {
   
       <div className="slider" ref={sliderRef2}>
         <div className="slider-content" id="sliderContent2">
-          {renderSliderItems(secondFive, 5)}
+          {renderSliderItems(secondFive, 10)}
         </div>
       </div>
     </>

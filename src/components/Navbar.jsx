@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { toggleType } from '../reduxToolkit/reducers/typeSlice';
+import Search from './Search';
 
 const Navbar = ({ toggleType, type }) => {
 
@@ -11,7 +12,6 @@ const Navbar = ({ toggleType, type }) => {
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a className="flex items-center space-x-3 rtl:space-x-reverse">
-
           <a className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Movie Web</a>
         </a>
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
@@ -30,11 +30,14 @@ const Navbar = ({ toggleType, type }) => {
               <a href="#" className="block py-2 px-3 md:p-0 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</a>
             </li>
 
-            <button onClick={() => dispatch(toggleType())} style={{ marginBottom: "1rem" }}>
+            <button onClick={() => dispatch(toggleType())} className='shadow px-2 rounded-2xl bg-blue-500'>
               {type === "movie" ? "TV Shows" : "Movies"}
             </button>
 
+            <Search />
+
           </ul>
+           
         </div>
       </div>
     </nav>
