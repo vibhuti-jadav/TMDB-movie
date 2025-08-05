@@ -14,7 +14,7 @@ const Discover = () => {
 
   const [lang, setLang] = useState(() => localStorage.getItem('selectedLang') || "");
 
- 
+
   useEffect(() => {
     localStorage.setItem('selectedLang', lang);
   }, [lang]);

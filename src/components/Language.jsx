@@ -20,8 +20,8 @@
 //       <button onClick={() => setOpen(!open)} >
 //         {selectedLangName || "Select Language 🔽"} 
 //       </button>
-                           
-  
+
+
 //    {open && (
 //         <div className="z-10 absolute mt-2 w-44 max-h-60 overflow-y-auto bg-black ">
 //           <ul>
@@ -74,9 +74,9 @@ const Language = ({ setLang }) => {
     <div className="relative inline-block text-white rounded border my-3 mx-5 px-5 text-left">
       <button onClick={() => setOpen(!open)}>
         {selectedLangName || "Select Language 🔽"}
-        
+
       </button>
-      
+
 
       {open && (
         <div className="z-10 absolute mt-2 w-44 max-h-60 overflow-y-auto bg-black border border-gray-700 rounded">
@@ -85,9 +85,8 @@ const Language = ({ setLang }) => {
               <li key={ele.iso_639_1}>
                 <button
                   onClick={() => handleSelect(ele.iso_639_1)}
-                  className={`block w-full text-left px-4 py-2 cursor-pointer hover:bg-gray-800 ${
-                    selectedLang === ele.iso_639_1 ? "font-bold text-yellow-400" : ""
-                  }`}
+                  className={`block w-full text-left px-4 py-2 cursor-pointer hover:bg-gray-800 ${selectedLang === ele.iso_639_1 ? "font-bold text-yellow-400" : ""
+                    }`}
                 >
                   {ele.english_name}
                 </button>
