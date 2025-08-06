@@ -95,7 +95,7 @@ const Search = () => {
 
   return (
     <div>
-      <input
+      {/* <input
         type="text"
         placeholder={`Search ${type === 'movie' ? 'Movies' : 'TV Shows'}`}
         value={query}
@@ -111,9 +111,32 @@ const Search = () => {
             {type === 'movie' ? item.title : item.name} ({item.release_date || item.first_air_date})
           </li>
         ))}
-      </ul>
+      </ul> */}
+      <input
+  type="text"
+  placeholder={`Search ${type === 'movie' ? 'Movies' : 'TV Shows'}...`}
+  value={query}
+  onChange={(e) => setQuery(e.target.value)}
+  className="w-full md:w-1/2 px-4 py-2 rounded-full bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+/>
+
+<ul className="mt-4 space-y-2">
+  {loading && <p className="text-white">Loading...</p>}
+  {!loading && query && results.length === 0 && (
+    <li className="text-gray-400">No results found.</li>
+  )}
+  {results.map((item) => (
+    <li key={item.id} className="text-white">
+      {type === 'movie' ? item.title : item.name} ({item.release_date || item.first_air_date || 'N/A'})
+    </li>
+  ))}
+</ul>
     </div>
   );
 };
 
 export default Search;
+
+
+
+

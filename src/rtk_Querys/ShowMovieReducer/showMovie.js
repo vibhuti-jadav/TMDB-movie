@@ -13,6 +13,6 @@ export const showMovie = createApi({
     movieVideo: build.query({
       query: ({ id, type }) => `/${type}/${id}/videos?api_key=${API_KEY}&language=en-US`,
     }),
-    
+
     })
 })
