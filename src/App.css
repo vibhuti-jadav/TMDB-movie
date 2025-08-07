@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+
 body{
     background-color: #181818;
     overflow-x: hidden;
@@ -107,11 +108,12 @@ header { width: 100%; max-width: 100%; padding-left: 100px; height: 50px; displa
 /* Блок с контентом слайдера / Slider content area */
 .slider-content {
   display: flex;
-  gap: 1px;
+  gap: 0px;
   padding: 20px 40px 40px; 
   padding-right: 80px; 
   width: 100%;
 }
+
 
 /* Один элемент карточки / One card item */
 .container {

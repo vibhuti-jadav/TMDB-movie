@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { showMovie } from '../rtk_Querys/ShowMovieReducer/showMovie';
 import { RiPlayCircleLine } from '@remixicon/react';
 import { useState } from 'react';
-import Recomandation from './Recomandation';
+import Recomandation from './Recomandation2';
 
 const EachDiscover = () => {
   const { id, type } = useParams();
@@ -43,23 +43,8 @@ const EachDiscover = () => {
   return (
     <>
 
-      <div className=" mx-auto max-w-sm mt-10   shadow-xs" role="group">
-        <button type="button" className="px-7 py-2 text-sm  text-gray-400 font-medium  bg-[#090808] border-0 rounded-s-full hover:text-white focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white  dark:focus:ring-blue-500 dark:focus:text-white">
-          Trailers
-        </button>
-        <button type="button" className="px-7 py-2 text-sm text-gray-400  font-medium  bg-[#090808] border-0 hover:text-white focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white  dark:focus:ring-blue-500 dark:focus:text-white">
-          More To Watch
-        </button>
-        <button type="button" className="px-7 py-2 text-sm  text-gray-400 font-medium  bg-[#090808] border-0 rounded-e-full hover:text-white focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white  dark:focus:ring-blue-500 dark:focus:text-white">
-          Plans
-        </button>
-      </div>
-
       <div className=' mt-10 ml-10 mr-10 '>
-        {/* <img
-        src={`https://image.tmdb.org/t/p/w500${data.backdrop_path}`} alt={data.title} style={{ width: '300px', borderRadius: '8px' }}
-           className='max-w-full' 
-        /> */}
+{/*        
 
         <figure className="relative  transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0">
           <a href="#">
@@ -78,184 +63,117 @@ const EachDiscover = () => {
               <div className='w-6xl mt-4 mb-5'>
                 <div className="des text-white font-bold">{data.overview}</div>
               </div>
-              <div className="btn">
-                <button>See More</button>
-                <button>Subscribe</button>
-              </div>
+              <p className="mt-4 text-sm opacity-80">{data.release_date || data.first_air_date} • {data.status}</p>
+      <div className="mt-4 flex flex-wrap gap-2">
+        {data.genres.map((genre) => (
+          <span key={genre.id} className="bg-red-600 text-white px-3 py-1 text-xs rounded-full">{genre.name}</span>
+        ))}
+      </div>
+     
+      <div className="mt-6 flex gap-4">
+        {trailer && (
+          <button
+            onClick={openModal}
+            className="bg-white text-black font-bold px-6 py-2 rounded-full hover:bg-red-600 hover:text-white transition"
+          >
+            ▶ Watch Trailer
+          </button>
+        )}
+        <button className="bg-gray-700 text-white font-bold px-6 py-2 rounded-full hover:bg-gray-500 transition">
+          + Add to Watchlist
+        </button>
+      </div>
+
             </div>
           </figcaption>
-        </figure>
+        </figure> */}
 
+        <figure className="relative w-full h-[90vh] overflow-hidden rounded-3xl">
+  {/* Backdrop Image */}
+  <img
+    src={`https://image.tmdb.org/t/p/original${data.backdrop_path}`}
+    alt={data.title}
+    className="absolute inset-0 w-full h-full object-cover brightness-50 transition-all duration-500"
+  />
 
-        <a className="block max-w-[1600px] mt-10 mb-10 mx-auto p-6 bg-[#7a7977] border border-gray-200 rounded-lg shadow-sm  dark:bg-gray-800 dark:border-gray-700 ">
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{data.title || data.name}</h5>
-          <p className="font-normal text-gray-700 dark:text-gray-400"> {data.release_date || data.first_air_date} <span className='ml-2 mr-2'>▪️</span> {data.status}  </p>
+  {/* Content Overlay */}
+  <figcaption className="relative z-10 flex flex-col md:flex-row items-start md:items-center h-full max-w-7xl mx-auto px-6 py-10">
+    {/* Poster Image */}
+    <img
+      src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
+      alt={data.title}
+      className="w-44 md:w-64 rounded-xl shadow-2xl border-4 border-white/10 mb-6 md:mb-0"
+    />
 
-          <div className='mt-2'>
-            {
-              data.genres.map((ele) => (
-                <span key={ele.id} className="bg-indigo-100  text-indigo-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-indigo-900 dark:text-indigo-300">{ele.name}</span>
-              ))
-            }
+    {/* Movie Details */}
+    <div className="md:ml-10 text-white max-w-3xl">
+      <h1 className="text-3xl md:text-5xl font-bold">{data.title}</h1>
 
-            <p className='mt-2'>{data.overview}</p>
+      <p className="mt-3 text-sm text-gray-300">
+        {data.release_date || data.first_air_date} • {data.status}
+      </p>
 
+      <div className="mt-3 flex flex-wrap gap-2">
+        {data.genres.map((genre) => (
+          <span
+            key={genre.id}
+            className="bg-red-600 text-white px-3 py-1 text-xs font-semibold rounded-full"
+          >
+            {genre.name}
+          </span>
+        ))}
+      </div>
 
-          </div>
+      <p className="mt-4 text-base text-gray-200 line-clamp-5">
+        {data.overview}
+      </p>
 
-        </a>
-
-
-        <div className="relative">
-
-          {/* {isModalOpen && trailer && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90">
-
-              <button
-                onClick={closeModal}
-                className="absolute top-6 size-22  right-10 text-white text-4xl font-bold hover:text-red-500"
-                aria-label="Close Trailer"
-              >
-                &times;
-              </button>
-
-              <div className="w-screen h-screen">
-                <iframe
-                  className="w-full h-full"
-                  src={`https://www.youtube-nocookie.com/embed/${trailer.key}?autoplay=1`}
-                  title="YouTube Trailer"
-                  frameBorder="0"
-                  allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-                  allowFullScreen
-                />
-              </div>
-            </div>
-          )} */}
-          {trailer ? (
-            <>
-              <h1 className='text-2xl text-white m-5'>Trailers</h1>
-              <div className="relative">
-                <img
-                  src={`https://image.tmdb.org/t/p/w500${data.backdrop_path}`}
-                  alt=""
-                  className="rounded-2xl object-cover"
-                />
-                <button
-                  className="absolute bottom-4 left-3"
-                  onClick={openModal}
-                  aria-label="Play Trailer"
-                >
-                  <RiPlayCircleLine className="size-14 text-white hover:text-red-500 transition" />
-                </button>
-
-                {isModalOpen && (
-                  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90">
-                    <button
-                      onClick={closeModal}
-                      className="absolute top-6 right-10 text-white text-4xl font-bold hover:text-red-500"
-                      aria-label="Close Trailer"
-                    >
-                      &times;
-                    </button>
-                    <div className="w-screen h-screen">
-                      <iframe
-                        className="w-full h-full"
-                        src={`https://www.youtube-nocookie.com/embed/${trailer.key}?autoplay=1`}
-                        title="YouTube Trailer"
-                        frameBorder="0"
-                        allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-                        allowFullScreen
-                      />
-                    </div>
-                  </div>
-                )}
-              </div>
-            </>
-          ) : (
-            <span className="bg-red-100 text-red-800 text-md font-medium mt-10 px-8 py-3 ml-5 rounded-full  dark:bg-red-900 dark:text-red-300">!No Trailer Available</span>
-          )}
-
-
-        </div>
-
-        <div className='grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-5 mt-10 '>
-          <div>
-            <a className="block w-full p-6 bg-[#7a7977] text-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-
-              <h5 className="text-[18px] font-bold tracking-tight text-gray-900 dark:text-white">Watch Offline</h5>
-              <h5 className="mb-3 text-[15px] font-bold tracking-tight text-gray-900 dark:text-white">Available to download</h5>
-
-              <p className="text-[18px] font-bold tracking-tight text-gray-900 dark:text-white">Gneres</p>
-              <p className="mb-3 text-[15px] font-bold tracking-tight text-gray-900 dark:text-white">
-                {
-                  data.genres.map((ele) => (
-                    <span key={ele.id} className="bg-indigo-100  text-indigo-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-indigo-900 dark:text-indigo-300">{ele.name}</span>
-                  ))
-                }
-              </p>
-              <p className="text-[18px] font-bold tracking-tight text-gray-900 dark:text-white">Language</p>
-
-              {data.spoken_languages.map((ele) => (
-
-                <h5 key={ele.id} className="mb-3 text-[15px] font-bold tracking-tight text-gray-900 dark:text-white">{ele.name}</h5>
-              ))
-              }
-            </a>
-          </div>
-
-          <div>
-            <a className="block w-full p-6 bg-[#7a7977] text-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-
-              <h5 className="text-[18px] font-bold tracking-tight text-gray-900 dark:text-white">Audio</h5>
-              {data.spoken_languages.map((ele) => (
-
-                <h5 key={ele.id} className="mb-3 text-[15px] font-bold tracking-tight text-gray-900 dark:text-white">{ele.name} - Audio Description, {ele.name}[original]</h5>
-
-              ))
-
-              }
-
-
-              <p className="text-[18px] font-bold tracking-tight text-gray-900 dark:text-white">Subtitles</p>
-
-              {data.spoken_languages.map((ele) => (
-
-                <h5 key={ele.id} className="mb-3 text-[15px] font-bold tracking-tight text-gray-900 dark:text-white">{ele.name}</h5>
-
-              ))
-
-              }
-
-            </a>
-          </div>
+      {/* Buttons */}
+      <div className="mt-6 flex gap-4 flex-wrap">
+        {trailer && (
+          <button
+            onClick={openModal}
+            className="bg-white text-black font-bold px-6 py-2 rounded-full hover:bg-red-600 hover:text-white transition"
+          >
+            ▶ Watch Trailer
+          </button>
+        )}
+        <button className="bg-gray-700 text-white font-bold px-6 py-2 rounded-full hover:bg-gray-500 transition">
+          + Add to Watchlist
+        </button>
+      </div>
+    </div>
+  </figcaption>
+</figure>
 
 
 
-          <div>
-            <a className="block w-full p-6 bg-[#7a7977] text-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
 
-              {/* <p className="text-[18px] font-bold tracking-tight text-gray-900 dark:text-white">Cast</p>
-<p className="mt-2 text-gray-700 dark:text-gray-300">
-  {credits.cast.map((ele) => ele.name).join(', ')}
-</p> */}
-              <p className="text-[18px] font-bold tracking-tight text-gray-900 dark:text-white">Cast</p>
-              <p className="mt-2 text-gray-700 dark:text-gray-300">
-                {
-                  credits.cast.map((ele, index) => {
-                    if (index >= 10) return null;
-                    return (
-                      <span key={ele.id || index}>
-                        {ele.name}
-                        {index < 9 && ', '}
-                      </span>
-                    );
-                  })
-                }
-              </p>
-            </a>
-          </div>
+<section className="max-w-7xl mx-auto px-6 mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <div className="bg-gray-800 rounded-xl p-6 text-white shadow-md">
+    <h3 className="text-lg font-semibold mb-2">Available to Download</h3>
+    <div className="mt-2">
+      {data.genres.map((genre) => (
+        <span key={genre.id} className="bg-indigo-600 text-white px-2 py-1 text-xs rounded-full mr-2">{genre.name}</span>
+      ))}
+    </div>
+  </div>
+  <div className="bg-gray-800 rounded-xl p-6 text-white shadow-md">
+    <h3 className="text-lg font-semibold mb-2">Audio & Subtitles</h3>
+    {data.spoken_languages.map((lang) => (
+      <p key={lang.name} className="text-sm">{lang.name}</p>
+    ))}
+  </div>
+  <div className="bg-gray-800 rounded-xl p-6 text-white shadow-md">
+    <h3 className="text-lg font-semibold mb-2">Cast</h3>
+    {credits.cast.slice(0, 5).map((actor) => (
+      <p key={actor.id} className="text-sm">{actor.name} as {actor.character}</p>
+    ))}
+  </div>
+</section>
 
-        </div>
+
+
 
         <h1 className='text-2xl text-white mt-5 '>Cast</h1>
         <p className="text-[18px] font-bold tracking-tight text-gray-900 dark:text-white mb-4">
@@ -282,14 +200,9 @@ const EachDiscover = () => {
             </div>
           ))}
         </div>
-
-
-
       </div>
 
-
-
-
+           <Recomandation /> 
 
     </>
   );
