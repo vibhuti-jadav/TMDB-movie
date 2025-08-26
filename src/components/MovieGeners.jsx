@@ -114,8 +114,6 @@
 
 
 
-
-
 import React from 'react';
 import { showMovie } from '../rtk_Querys/ShowMovieReducer/showMovie';
 

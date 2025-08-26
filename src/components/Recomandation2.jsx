@@ -7,10 +7,15 @@ import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-const Recomandation = () => {
-  const { data } = showMovie.useAllMovieQuery({
-    endpoint: 'movie/541671/recommendations',
-  });
+const Recomandation = ({id,type}) => {
+  // const { data } = showMovie.useAllMovieQuery({
+  //   endpoint: 'movie/541671/recommendations',
+  // });
+   const { data } = showMovie.useAllMovieQuery({
+      endpoint: `${type}/${id}/recommendations`
+    });
+
+
 
   return (
     <div className="mt-16 mb-24 px-4 md:px-12">

@@ -107,7 +107,7 @@ const EachDiscover = () => {
 
     {/* Movie Details */}
     <div className="md:ml-10 text-white max-w-3xl">
-      <h1 className="text-3xl md:text-5xl font-bold">{data.title}</h1>
+      <h1 className="text-3xl md:text-5xl font-bold">{data.title || data.name}</h1>
 
       <p className="mt-3 text-sm text-gray-300">
         {data.release_date || data.first_air_date} • {data.status}
@@ -199,7 +199,7 @@ const EachDiscover = () => {
         </div>
       </div>
 
-           <Recomandation /> 
+           <Recomandation id={id} type={type}/> 
 
     </>
   );

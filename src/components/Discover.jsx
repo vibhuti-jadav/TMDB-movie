@@ -8,6 +8,7 @@ import Navbar from './Navbar';
 import Card from './Card';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleType } from '../reduxToolkit/reducers/typeSlice';
+import Footer from './Footer';
 
 const Discover = () => {
 
@@ -47,6 +48,8 @@ useEffect(() => {
   page,
   list
 };
+
+
 
 if (lang) {
   query.lang = lang; // ✅ Only include if non-null
@@ -108,7 +111,9 @@ const { data, isLoading, error } = showMovie.useAllMovieQuery(query);
         ))}
       </div>
       <Pagination page={page} setPage={setPage} />
-      <Recomandation />
+      {/* <Recomandation /> */}
+      <Recomandation id={data.results[0]?.id} type={type} />
+            <Footer/>
     </>
   );
 };
