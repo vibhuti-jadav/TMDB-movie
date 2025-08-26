@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { showMovie } from '../rtk_Querys/ShowMovieReducer/showMovie';
 import Pagination from './Pagination';
@@ -12,12 +11,26 @@ import { toggleType } from '../reduxToolkit/reducers/typeSlice';
 
 const Discover = () => {
 
-  const [lang, setLang] = useState(() => localStorage.getItem('selectedLang') || "");
+ // const [lang, setLang] = useState(() => localStorage.getItem('selectedLang') || null);
+
+const [lang, setLang] = useState(() => {
+  const storedLang = localStorage.getItem('selectedLang');
+  return storedLang !== null ? storedLang : null;
+});
 
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   localStorage.setItem('selectedLang', lang);
+  // }, [lang]);
+
+useEffect(() => {
+  if (lang) {
     localStorage.setItem('selectedLang', lang);
-  }, [lang]);
+  } else {
+    localStorage.removeItem('selectedLang');
+  }
+}, [lang]);
+
 
   const dispatch = useDispatch();
   const type = useSelector((state) => state.typeToggle.type);
@@ -25,9 +38,22 @@ const Discover = () => {
   const [page, setPage] = useState(1);
   const [list, setList] = useState([]);
 
-  const { data, isLoading, error } = showMovie.useAllMovieQuery({
-    endpoint: `discover/${type}`, page: page, lang: lang, list: list,
-  });
+  // const { data, isLoading, error } = showMovie.useAllMovieQuery({
+  //   endpoint: `discover/${type}`, page: page, lang: lang, list: list,
+  // });
+
+  const query = {
+  endpoint: `discover/${type}`,
+  page,
+  list
+};
+
+if (lang) {
+  query.lang = lang; // ✅ Only include if non-null
+}
+
+const { data, isLoading, error } = showMovie.useAllMovieQuery(query);
+
 
   const handleToggleType = () => {
     dispatch(toggleType());
@@ -41,7 +67,32 @@ const Discover = () => {
   return (
     <>
       <Navbar toggleType={handleToggleType} type={type} />
-      <Language setLang={setLang} />
+      {/* <Language setLang={setLang} /> */}
+      {/* <Language
+  setLang={(iso) => {
+    if (iso === null) {
+      setLang("");      // Reset language filter
+      setList([]);      // Clear genres if needed
+      setPage(1);       // Reset page
+    } else {
+      setLang(iso);     // Apply selected language
+      setList([]);
+      setPage(1);
+      localStorage.setItem('selectedLang', iso);
+    }
+  }}
+  lang={lang}
+/> */}
+<Language
+  setLang={(iso) => {
+    setLang(iso);         // 🔁 updates Discover state
+    setList([]);          // resets genres
+    setPage(1);           // resets page
+    localStorage.setItem('selectedLang', iso);
+  }}
+  lang={lang}
+/>
+
       <MovieGeners setList={setList} list={list} />
 
       {/* <h1 className="font-bold text-white text-center text-2xl">Discover</h1> */}
