@@ -6,7 +6,6 @@ const initialState = {
   type: localStorage.getItem('selectedType') || 'movie',  // default to 'movie'
 };
 
-
 const typeSlice = createSlice({
   name: 'typeToggle',
   initialState,
