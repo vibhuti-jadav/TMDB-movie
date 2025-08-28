@@ -19,7 +19,7 @@ const Recomandation = ({id,type}) => {
 
   return (
     <div className="mt-16 mb-24 px-4 md:px-12">
-      <h2 className="text-3xl font-extrabold text-white mb-8 text-center">🔥 Recommended Movies</h2>
+      <h2 className="text-3xl font-extrabold text-white mb-8 text-center">🔥 Recommended for you </h2>
 
       <Swiper
         modules={[Navigation]}
