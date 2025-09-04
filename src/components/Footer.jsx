@@ -19,9 +19,9 @@ const Footer = () => {
           <h3 className="text-white font-semibold mb-4">Explore</h3>
           <ul className="space-y-2 text-sm">
             <li><a href="/" className="hover:text-white transition">Home</a></li>
-            <li><a href="/movies" className="hover:text-white transition">Movies</a></li>
-            <li><a href="/series" className="hover:text-white transition">TV Series</a></li>
-            <li><a href="/search" className="hover:text-white transition">Search</a></li>
+            <li><a  className="hover:text-white transition">Movies</a></li>
+            <li><a  className="hover:text-white transition">TV Series</a></li>
+            <li><a  className="hover:text-white transition">Search</a></li>
           </ul>
         </div>
 
@@ -29,10 +29,10 @@ const Footer = () => {
         <div>
           <h3 className="text-white font-semibold mb-4">Support</h3>
           <ul className="space-y-2 text-sm">
-            <li><a href="/faq" className="hover:text-white transition">FAQ</a></li>
-            <li><a href="/contact" className="hover:text-white transition">Contact</a></li>
-            <li><a href="/privacy" className="hover:text-white transition">Privacy Policy</a></li>
-            <li><a href="/terms" className="hover:text-white transition">Terms of Service</a></li>
+            <li><a  className="hover:text-white transition">FAQ</a></li>
+            <li><a  className="hover:text-white transition">Contact</a></li>
+            <li><a  className="hover:text-white transition">Privacy Policy</a></li>
+            <li><a  className="hover:text-white transition">Terms of Service</a></li>
           </ul>
         </div>
 
@@ -58,16 +58,16 @@ const Footer = () => {
       <div className="flex flex-col md:flex-row justify-between items-center mt-6 max-w-7xl mx-auto text-sm px-2">
         <p className="mb-3 md:mb-0">&copy; {new Date().getFullYear()} MovieVerse. All rights reserved.</p>
         <div className="flex space-x-4 text-xl">
-          <a href="https://twitter.com" target="_blank" className="hover:text-white transition" aria-label="Twitter">
+          <a  target="_blank" className="hover:text-white transition" aria-label="Twitter">
            <RiTwitterXLine/>
           </a>
-          <a href="https://github.com" target="_blank" className="hover:text-white transition" aria-label="GitHub">
+          <a  target="_blank" className="hover:text-white transition" aria-label="GitHub">
            <RiGithubFill/>
           </a>
-          <a href="https://youtube.com" target="_blank" className="hover:text-white transition" aria-label="YouTube">
+          <a  target="_blank" className="hover:text-white transition" aria-label="YouTube">
             <RiYoutubeFill/>
           </a>
-          <a href="https://linkedin.com" target="_blank" className="hover:text-white transition" aria-label="LinkedIn">
+          <a  target="_blank" className="hover:text-white transition" aria-label="LinkedIn">
            <RiLinkedinFill/>
           </a>
         </div>

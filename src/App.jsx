@@ -18,7 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Discover />} />
         <Route path="/discover/:type/:id" element={<EachDiscover />} />
-
+ 
       </Routes>
     
       {/* <Recomandation/> */}
