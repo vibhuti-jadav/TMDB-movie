@@ -23,13 +23,11 @@ movieGenres: build.query({
     movieVideo: build.query({
       query: ({ id, type }) => `/${type}/${id}/videos?api_key=${API_KEY}&language=en-US`,
     }),
-       searchMoviesOrTV: build.query({
-      query: ({ type = "movie", query }) =>
-        `/search/${type}?api_key=${API_KEY}&language=en-US&query=${encodeURIComponent(
-          query
-        )}&include_adult=false&page=1`,
-    }),
-
+      
+movieDetail: build.query({
+  query: ({ id, type }) =>
+    `/${type}/${id}?api_key=${API_KEY}&language=en-US`,
+}),
 
     })
 })

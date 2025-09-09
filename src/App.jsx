@@ -7,6 +7,9 @@ import Discover from './components/Discover'
 import { Route, Routes } from 'react-router'
 import Recomandation from './components/Recomandation'
 import EachDiscover from './components/Eachdiscover'
+import Search from './components/Search'
+import TvDetail from './components/TvDetail'
+import MovieDetail from './components/MovieDetail'
 
 function App() {
 
@@ -18,7 +21,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Discover />} />
         <Route path="/discover/:type/:id" element={<EachDiscover />} />
- 
+           <Route path="/tv/:id" element={<TvDetail />} />
+      <Route path="/movie/:id" element={<MovieDetail />} />
+      <Route path="/search" element={<Search />}  /> 
       </Routes>
     
       {/* <Recomandation/> */}
