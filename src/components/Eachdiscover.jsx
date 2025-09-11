@@ -130,14 +130,47 @@ const EachDiscover = () => {
 
       {/* Buttons */}
       <div className="mt-6 flex gap-4 flex-wrap">
-        {trailer && (
+        {isModalOpen && trailer && (
+  <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
+    <div className="relative w-full max-w-4xl aspect-video bg-black rounded-xl overflow-hidden shadow-lg">
+      {/* Close Button */}
+      <button
+        onClick={closeModal}
+        className="absolute top-2 right-2 text-white text-2xl z-10 hover:text-red-500"
+      >
+        ✕
+      </button>
+
+      {/* YouTube Embed */}
+      <iframe
+        src={`https://www.youtube.com/embed/${trailer.key}?autoplay=1`}
+        title="YouTube trailer"
+        allow="autoplay; encrypted-media"
+        allowFullScreen
+        className="w-full h-full"
+      ></iframe>
+    </div>
+  </div>
+)}
+
+        {/* {trailer && (
           <button
             onClick={openModal}
             className="bg-white text-black font-bold px-6 py-2 rounded-full hover:bg-red-600 hover:text-white transition"
           >
             ▶ Watch Trailer
           </button>
-        )}
+        )} */}
+
+        {trailer && (
+  <button
+    onClick={openModal}
+    className="bg-white text-black font-bold px-6 py-2 rounded-full hover:bg-red-600 hover:text-white transition"
+  >
+    ▶ Watch Trailer
+  </button>
+)}
+
         <button className="bg-gray-700 text-white font-bold px-6 py-2 rounded-full hover:bg-gray-500 transition">
           + Add to Watchlist
         </button>

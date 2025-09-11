@@ -151,13 +151,21 @@ const MovieDetail = () => {
           <div>
             <h1 className="text-5xl md:text-6xl font-extrabold mb-4">{data.title}</h1>
             <p className="text-gray-300 text-lg md:text-xl mb-6 max-w-3xl leading-relaxed">{data.overview}</p>
-
+{/* 
             <div className="flex flex-wrap gap-6 mb-8">
               <DetailItem title="Release" value={new Date(data.release_date).toLocaleDateString()} />
               <DetailItem title="Rating" value={`⭐ ${data.vote_average.toFixed(1)}`} />
               <DetailItem title="Runtime" value={`${data.runtime} min`} />
               <DetailItem title="Status" value={data.status} />
-            </div>
+            </div> */}
+
+           <div className="flex flex-wrap gap-6 mb-8  !text-black p-4 rounded">
+  <DetailItem title="Release" value={new Date(data.release_date).toLocaleDateString()} />
+  <DetailItem title="Rating" value={`⭐ ${data.vote_average.toFixed(1)}`} />
+  <DetailItem title="Runtime" value={`${data.runtime} min`} />
+  <DetailItem title="Status" value={data.status} />
+</div>
+
 
             {/* Genres */}
             <div className="mb-10">
