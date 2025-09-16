@@ -189,6 +189,8 @@ const MovieDetail = () => {
             >
               ▶ Watch Now
             </button>
+
+          
           </div>
         </div>
       </div>

@@ -44,49 +44,6 @@ const EachDiscover = () => {
     <>
 
       <div className=' mt-10 ml-10 mr-10 '>
-{/*        
-
-        <figure className="relative  transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0">
-          <a href="#">
-            <img className="rounded-3xl w-full h-200 object-cover" src={`https://image.tmdb.org/t/p/original${data.backdrop_path}`} alt={data.title} />
-
-          </a>
-          <figcaption className="absolute px-4 text-lg text-white bottom-6">
-
-            <div className="content">
-              <img
-                src={`https://image.tmdb.org/t/p/original${data.poster_path}`}
-                className=" w-55  shadow-gray-950 shadow-xl size-80 rounded-xl "
-                alt={data.title}
-              />
-              <div className="name">{data.title}</div>
-              <div className='w-6xl mt-4 mb-5'>
-                <div className="des text-white font-bold">{data.overview}</div>
-              </div>
-              <p className="mt-4 text-sm opacity-80">{data.release_date || data.first_air_date} • {data.status}</p>
-      <div className="mt-4 flex flex-wrap gap-2">
-        {data.genres.map((genre) => (
-          <span key={genre.id} className="bg-red-600 text-white px-3 py-1 text-xs rounded-full">{genre.name}</span>
-        ))}
-      </div>
-     
-      <div className="mt-6 flex gap-4">
-        {trailer && (
-          <button
-            onClick={openModal}
-            className="bg-white text-black font-bold px-6 py-2 rounded-full hover:bg-red-600 hover:text-white transition"
-          >
-            ▶ Watch Trailer
-          </button>
-        )}
-        <button className="bg-gray-700 text-white font-bold px-6 py-2 rounded-full hover:bg-gray-500 transition">
-          + Add to Watchlist
-        </button>
-      </div>
-
-            </div>
-          </figcaption>
-        </figure> */}
 
         <figure className="relative w-full h-[90vh] overflow-hidden rounded-3xl">
   {/* Backdrop Image */}
