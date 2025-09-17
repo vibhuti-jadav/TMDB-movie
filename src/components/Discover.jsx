@@ -9,8 +9,12 @@ import Card from './Card';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleType } from '../reduxToolkit/reducers/typeSlice';
 import Footer from './Footer';
+import Slider from './Slider';
 
 const Discover = () => {
+
+
+
 
  // const [lang, setLang] = useState(() => localStorage.getItem('selectedLang') || null);
 
@@ -70,6 +74,9 @@ const { data, isLoading, error } = showMovie.useAllMovieQuery(query);
   return (
     <>
       <Navbar toggleType={handleToggleType} type={type} />
+
+        {/* <Slider/> */}
+
       {/* <Language setLang={setLang} /> */}
       {/* <Language
   setLang={(iso) => {
