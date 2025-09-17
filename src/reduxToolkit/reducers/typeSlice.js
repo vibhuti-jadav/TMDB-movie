@@ -1,25 +1,22 @@
-
-
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  type: localStorage.getItem('selectedType') || 'movie',  // default to 'movie'
+  type: localStorage.getItem("selectedType") || "movie", // default to 'movie'
 };
 
 const typeSlice = createSlice({
-  name: 'typeToggle',
+  name: "typeToggle",
   initialState,
   reducers: {
     toggleType: (state) => {
-      state.type = state.type === 'movie' ? 'tv' : 'movie';
-      localStorage.setItem('selectedType', state.type);  
+      state.type = state.type === "movie" ? "tv" : "movie";
+      localStorage.setItem("selectedType", state.type);
     },
     setType: (state, action) => {
       state.type = action.payload;
-      localStorage.setItem('selectedType', state.type);  
+      localStorage.setItem("selectedType", state.type);
     },
   },
-
 });
 
 export const { toggleType, setType } = typeSlice.actions;

@@ -1,25 +1,25 @@
-import React from 'react';
-import { showMovie } from '../rtk_Querys/ShowMovieReducer/showMovie';
-import { Link } from 'react-router-dom'; // fix import
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import React from "react";
+import { showMovie } from "../rtk_Querys/ShowMovieReducer/showMovie";
+import { Link } from "react-router-dom"; // fix import
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
 
-import 'swiper/css';
-import 'swiper/css/navigation';
+import "swiper/css";
+import "swiper/css/navigation";
 
-const Recomandation = ({id,type}) => {
+const Recomandation = ({ id, type }) => {
   // const { data } = showMovie.useAllMovieQuery({
   //   endpoint: 'movie/541671/recommendations',
   // });
-   const { data } = showMovie.useAllMovieQuery({
-      endpoint: `${type}/${id}/recommendations`
-    });
-
-
+  const { data } = showMovie.useAllMovieQuery({
+    endpoint: `${type}/${id}/recommendations`,
+  });
 
   return (
     <div className="mt-16 mb-24 px-4 md:px-12">
-      <h2 className="text-3xl font-extrabold text-white mb-8 text-center">🔥 Recommended for you </h2>
+      <h2 className="text-3xl font-extrabold text-white mb-8 text-center">
+        🔥 Recommended for you{" "}
+      </h2>
 
       <Swiper
         modules={[Navigation]}

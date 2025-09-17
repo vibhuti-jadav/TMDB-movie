@@ -1,15 +1,13 @@
-
-
-import '../App.css'
-import React, { useEffect, useRef } from 'react';
-import { showMovie } from '../rtk_Querys/ShowMovieReducer/showMovie';
-import { Link } from 'react-router-dom';
+import "../App.css";
+import React, { useEffect, useRef } from "react";
+import { showMovie } from "../rtk_Querys/ShowMovieReducer/showMovie";
+import { Link } from "react-router-dom";
 
 const Recomandation = ({ id, type }) => {
   //  const { data } = showMovie.useAllMovieQuery({ endpoint: "movie/541671/recommendations" });
- 
- const { data } = showMovie.useAllMovieQuery({
-    endpoint: `${type}/${id}/recommendations`
+
+  const { data } = showMovie.useAllMovieQuery({
+    endpoint: `${type}/${id}/recommendations`,
   });
 
   const firstFive = data?.results.slice(0, 10) || [];
@@ -69,7 +67,7 @@ const Recomandation = ({ id, type }) => {
           momentumAnimation = null;
         }
         isDragging = true;
-        slider.classList.add('grabbing');
+        slider.classList.add("grabbing");
         startX = e.clientX;
         scrollLeft = slider.scrollLeft;
         lastX = startX;
@@ -91,7 +89,7 @@ const Recomandation = ({ id, type }) => {
         if (!isDragging) return;
         e.preventDefault();
         isDragging = false;
-        slider.classList.remove('grabbing');
+        slider.classList.remove("grabbing");
         animateMomentum();
       }
 
@@ -122,35 +120,33 @@ const Recomandation = ({ id, type }) => {
       function onTouchEnd(e) {
         if (!isDragging) return;
         isDragging = false;
-        slider.classList.remove('grabbing');
+        slider.classList.remove("grabbing");
         animateMomentum();
       }
 
-      slider.addEventListener('mousedown', onMouseDown);
-      window.addEventListener('mousemove', onMouseMove);
-      window.addEventListener('mouseup', onMouseUp);
-      slider.addEventListener('touchstart', onTouchStart, { passive: false });
-      window.addEventListener('touchmove', onTouchMove, { passive: false });
-      window.addEventListener('touchend', onTouchEnd);
+      slider.addEventListener("mousedown", onMouseDown);
+      window.addEventListener("mousemove", onMouseMove);
+      window.addEventListener("mouseup", onMouseUp);
+      slider.addEventListener("touchstart", onTouchStart, { passive: false });
+      window.addEventListener("touchmove", onTouchMove, { passive: false });
+      window.addEventListener("touchend", onTouchEnd);
 
       return () => {
-        slider.removeEventListener('mousedown', onMouseDown);
-        window.removeEventListener('mousemove', onMouseMove);
-        window.removeEventListener('mouseup', onMouseUp);
-        slider.removeEventListener('touchstart', onTouchStart);
-        window.removeEventListener('touchmove', onTouchMove);
-        window.removeEventListener('touchend', onTouchEnd);
+        slider.removeEventListener("mousedown", onMouseDown);
+        window.removeEventListener("mousemove", onMouseMove);
+        window.removeEventListener("mouseup", onMouseUp);
+        slider.removeEventListener("touchstart", onTouchStart);
+        window.removeEventListener("touchmove", onTouchMove);
+        window.removeEventListener("touchend", onTouchEnd);
 
         if (momentumAnimation) cancelAnimationFrame(momentumAnimation);
       };
     }, [ref]);
   }
 
- 
   const sliderRef1 = useRef(null);
   const sliderRef2 = useRef(null);
 
- 
   useSliderDrag(sliderRef1);
   useSliderDrag(sliderRef2);
 
@@ -204,20 +200,17 @@ const Recomandation = ({ id, type }) => {
 
   return (
     <>
-           <h1 className="text-5xl font-extrabold text-white text-center tracking-wide mb-8 relative">
-  <span className="relative z-10">Recommendation</span>
-  <span className="absolute left-1/2 -bottom-2 w-65 h-1 bg-blue-700 rounded-full transform -translate-x-1/2"></span>
-</h1>
+      <h1 className="text-5xl font-extrabold text-white text-center tracking-wide mb-8 relative">
+        <span className="relative z-10">Recommendation</span>
+        <span className="absolute left-1/2 -bottom-2 w-65 h-1 bg-blue-700 rounded-full transform -translate-x-1/2"></span>
+      </h1>
 
-
- 
       <div className="slider mb-10" ref={sliderRef1}>
         <div className="slider-content" id="sliderContent1">
           {renderSliderItems(firstFive, 0)}
         </div>
       </div>
 
-  
       <div className="slider" ref={sliderRef2}>
         <div className="slider-content" id="sliderContent2">
           {renderSliderItems(secondFive, 10)}
@@ -228,4 +221,3 @@ const Recomandation = ({ id, type }) => {
 };
 
 export default Recomandation;
-

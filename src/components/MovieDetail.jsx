@@ -1,49 +1,63 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { showMovie } from '../rtk_Querys/ShowMovieReducer/showMovie';
-import Modal from './Modal';
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
+import { showMovie } from "../rtk_Querys/ShowMovieReducer/showMovie";
+import Modal from "./Modal";
 
-const API_KEY = '23f45d0d0053dccafd488246343642e2';
+const API_KEY = "23f45d0d0053dccafd488246343642e2";
 
 const MovieDetail = () => {
-   const { id } = useParams();
-   const { data, isLoading, error } = showMovie.useMovieDetailQuery({ id, type: 'movie' });
-   const [trailerUrl, setTrailerUrl] = useState(null);
+  const { id } = useParams();
+  const { data, isLoading, error } = showMovie.useMovieDetailQuery({
+    id,
+    type: "movie",
+  });
+  const [trailerUrl, setTrailerUrl] = useState(null);
 
-   if (isLoading)
-     return <p className="text-white text-center mt-20 text-xl">Loading movie...</p>;
-   if (error || !data)
-     return <p className="text-red-500 text-center mt-20 text-xl">Error loading movie.</p>;
+  if (isLoading)
+    return (
+      <p className="text-white text-center mt-20 text-xl">Loading movie...</p>
+    );
+  if (error || !data)
+    return (
+      <p className="text-red-500 text-center mt-20 text-xl">
+        Error loading movie.
+      </p>
+    );
 
-   const fetchTrailer = async () => {
-     try {
-       const res = await fetch(
-         `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}&language=en-US`
+  const fetchTrailer = async () => {
+    try {
+      const res = await fetch(
+        `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}&language=en-US`
       );
-       const videos = await res.json();
+      const videos = await res.json();
 
-       if (videos.results && videos.results.length > 0) {
-         const trailer = videos.results.find((v) => v.type === 'Trailer' && v.site === 'YouTube');
+      if (videos.results && videos.results.length > 0) {
+        const trailer = videos.results.find(
+          (v) => v.type === "Trailer" && v.site === "YouTube"
+        );
         if (trailer) {
-          setTrailerUrl(`https://www.youtube.com/embed/${trailer.key}?autoplay=1`);           return;
-         }
-       }
-       alert('Trailer not found.');
-     } catch (err) {
-       alert('Failed to fetch trailer.');
-       console.error(err);
-     }
-   };
+          setTrailerUrl(
+            `https://www.youtube.com/embed/${trailer.key}?autoplay=1`
+          );
+          return;
+        }
+      }
+      alert("Trailer not found.");
+    } catch (err) {
+      alert("Failed to fetch trailer.");
+      console.error(err);
+    }
+  };
 
-   const closeModal = () => setTrailerUrl(null);
+  const closeModal = () => setTrailerUrl(null);
   return (
     <div
       className="relative min-h-screen w-full text-white"
       style={{
         backgroundImage: `url(https://image.tmdb.org/t/p/original${data.backdrop_path})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'top center',
-        backgroundRepeat: 'no-repeat',
+        backgroundSize: "cover",
+        backgroundPosition: "top center",
+        backgroundRepeat: "no-repeat",
       }}
     >
       {/* Overlay gradient */}
@@ -63,17 +77,25 @@ const MovieDetail = () => {
         {/* Details */}
         <div className="flex flex-col justify-between w-full md:w-2/3">
           <div>
-            <h1 className="text-5xl md:text-6xl font-extrabold mb-4">{data.title}</h1>
-            <p className="text-gray-300 text-lg md:text-xl mb-6 max-w-3xl leading-relaxed">{data.overview}</p>
+            <h1 className="text-5xl md:text-6xl font-extrabold mb-4">
+              {data.title}
+            </h1>
+            <p className="text-gray-300 text-lg md:text-xl mb-6 max-w-3xl leading-relaxed">
+              {data.overview}
+            </p>
 
-
-           <div className="flex flex-wrap gap-6 mb-8  !text-black p-4 rounded">
-  <DetailItem title="Release" value={new Date(data.release_date).toLocaleDateString()} />
-  <DetailItem title="Rating" value={`⭐ ${data.vote_average.toFixed(1)}`} />
-  <DetailItem title="Runtime" value={`${data.runtime} min`} />
-  <DetailItem title="Status" value={data.status} />
-</div>
-
+            <div className="flex flex-wrap gap-6 mb-8  !text-black p-4 rounded">
+              <DetailItem
+                title="Release"
+                value={new Date(data.release_date).toLocaleDateString()}
+              />
+              <DetailItem
+                title="Rating"
+                value={`⭐ ${data.vote_average.toFixed(1)}`}
+              />
+              <DetailItem title="Runtime" value={`${data.runtime} min`} />
+              <DetailItem title="Status" value={data.status} />
+            </div>
 
             {/* Genres */}
             <div className="mb-10">
@@ -90,14 +112,13 @@ const MovieDetail = () => {
               </div>
             </div>
 
-       <button
-              onClick={fetchTrailer}          
-              
+            <button
+              onClick={fetchTrailer}
               className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 text-lg font-bold rounded-full shadow-xl transition duration-300"
-           >
-            ▶ Watch Now
+            >
+              ▶ Watch Now
             </button>
-          <Modal videoUrl={trailerUrl} closeModal={closeModal} />
+            <Modal videoUrl={trailerUrl} closeModal={closeModal} />
           </div>
         </div>
       </div>
@@ -113,36 +134,3 @@ const DetailItem = ({ title, value }) => (
 );
 
 export default MovieDetail;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

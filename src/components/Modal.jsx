@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Modal = ({ videoUrl, closeModal }) => {
   if (!videoUrl) return null;
@@ -33,4 +33,3 @@ const Modal = ({ videoUrl, closeModal }) => {
 };
 
 export default Modal;
-
