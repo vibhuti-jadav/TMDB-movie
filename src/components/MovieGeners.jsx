@@ -24,7 +24,7 @@ const genreIcons = {
 };
 
 const MovieGeners = ({ setList, list }) => {
-  const { data, isLoading, error } = showMovie.useMovieGenresQuery(); // ✅ use the new one
+  const { data, isLoading, error } = showMovie.useMovieGenresQuery(); 
 
   const isSelected = (id) => list.includes(id);
 

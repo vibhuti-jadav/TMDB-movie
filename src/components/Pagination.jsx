@@ -6,7 +6,7 @@ const Pagination = ({ page, setPage }) => {
     endpoint: "discover/movie",
     page: 1,
   });
-  const totalPages = data?.total_pages || 500; // Limit to TMDB max pages
+  const totalPages = data?.total_pages || 500; 
 
   const handlePrev = () => {
     if (page > 1) setPage(page - 1);

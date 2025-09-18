@@ -113,14 +113,7 @@ const EachDiscover = () => {
                   </div>
                 )}
 
-                {/* {trailer && (
-          <button
-            onClick={openModal}
-            className="bg-white text-black font-bold px-6 py-2 rounded-full hover:bg-red-600 hover:text-white transition"
-          >
-            ▶ Watch Trailer
-          </button>
-        )} */}
+               
 
                 {trailer && (
                   <button

@@ -66,29 +66,11 @@ const Discover = () => {
     <>
       <Navbar toggleType={handleToggleType} type={type} />
 
-      {/* <Slider/> */}
-
-      {/* <Language setLang={setLang} /> */}
-      {/* <Language
-  setLang={(iso) => {
-    if (iso === null) {
-      setLang("");      // Reset language filter
-      setList([]);      // Clear genres if needed
-      setPage(1);       // Reset page
-    } else {
-      setLang(iso);     // Apply selected language
-      setList([]);
-      setPage(1);
-      localStorage.setItem('selectedLang', iso);
-    }
-  }}
-  lang={lang}
-/> */}
       <Language
         setLang={(iso) => {
-          setLang(iso); // 🔁 updates Discover state
-          setList([]); // resets genres
-          setPage(1); // resets page
+          setLang(iso); 
+          setList([]); 
+          setPage(1); 
           localStorage.setItem("selectedLang", iso);
         }}
         lang={lang}
@@ -96,7 +78,7 @@ const Discover = () => {
 
       <MovieGeners setList={setList} list={list} />
 
-      {/* <h1 className="font-bold text-white text-center text-2xl">Discover</h1> */}
+     
       <h1 className="text-5xl font-extrabold text-white text-center tracking-wide mb-8 relative">
         <span className="relative z-10">Discover</span>
         <span className="absolute left-1/2 -bottom-2 w-24 h-1 bg-blue-700 rounded-full transform -translate-x-1/2"></span>
@@ -108,7 +90,7 @@ const Discover = () => {
         ))}
       </div>
       <Pagination page={page} setPage={setPage} />
-      {/* <Recomandation /> */}
+    
       <Recomandation id={data.results[0]?.id} type={type} />
       <Footer />
     </>
