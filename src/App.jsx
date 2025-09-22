@@ -4,7 +4,6 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import Discover from "./components/Discover";
 import { Route, Routes } from "react-router";
-import Recomandation from "./components/Recomandation";
 import EachDiscover from "./components/Eachdiscover";
 import Search from "./components/Search";
 import TvDetail from "./components/TvDetail";
@@ -21,9 +20,12 @@ function App() {
         <Route path="/search" element={<Search />} />
       </Routes>
 
-      {/* <Recomandation/> */}
+   
     </>
   );
 }
 
 export default App;
+
+
+

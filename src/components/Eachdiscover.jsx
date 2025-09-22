@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { showMovie } from "../rtk_Querys/ShowMovieReducer/showMovie";
 import { RiPlayCircleLine } from "@remixicon/react";
-import { useState } from "react";
+import {  useState } from "react";
 import Recomandation from "./Recomandation2";
 
 const EachDiscover = () => {
@@ -42,6 +42,7 @@ const EachDiscover = () => {
   const closeModal = () => {
     setModalOpen(false);
   };
+
 
   return (
     <>
