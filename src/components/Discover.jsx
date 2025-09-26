@@ -65,6 +65,10 @@ const Discover = () => {
   return (
     <>
       <Navbar toggleType={handleToggleType} type={type} />
+<br />
+<br />
+<br />
+<Slider/>
 
       <Language
         setLang={(iso) => {
@@ -77,12 +81,15 @@ const Discover = () => {
       />
 
       <MovieGeners setList={setList} list={list} />
+      
 
-     
-      <h1 className="text-5xl font-extrabold text-white text-center tracking-wide mb-8 relative">
-        <span className="relative z-10">Discover</span>
-        <span className="absolute left-1/2 -bottom-2 w-24 h-1 bg-blue-700 rounded-full transform -translate-x-1/2"></span>
-      </h1>
+
+<h1 className="text-5xl md:text-6xl font-extrabold text-white text-center tracking-wide mb-8 relative animate-fadeIn">
+  <span className="relative z-10 drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]"> Discover</span>
+  <span className="absolute left-1/2 -bottom-2 w-32 h-1 bg-gradient-to-r from-blue-600 to-purple-700 rounded-full transform -translate-x-1/2"></span>
+</h1>
+
+      
 
       <div className="max-w-7xl mx-auto mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {data.results.map((ele) => (

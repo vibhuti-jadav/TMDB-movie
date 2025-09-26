@@ -26,6 +26,7 @@ const Language = ({ setLang, lang }) => {
 
   return (
     <div className="relative inline-block text-left mx-5 my-4">
+
       {/* Dropdown Button */}
       <button
         onClick={() => setOpen(!open)}

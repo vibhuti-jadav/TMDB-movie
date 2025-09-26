@@ -69,7 +69,7 @@ const Slider = () => {
   }, []);
 
   return (
-    <div className="carousel" ref={carouselRef}>
+    <div className="carousel my-5" ref={carouselRef}>
       <div className="carousel" ref={carouselRef}>
         <div className="list" ref={listRef}>
           {data?.results.map((ele, index) => (

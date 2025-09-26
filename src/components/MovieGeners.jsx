@@ -59,8 +59,8 @@ const MovieGeners = ({ setList, list }) => {
             className={`px-4 py-1.5 text-sm font-medium rounded-full border transition-all duration-300 ease-in-out flex items-center gap-2
               ${
                 isSelected(genre.id)
-                  ? "bg-yellow-500 text-black border-yellow-400 shadow-md hover:bg-yellow-400"
-                  : "bg-gray-800 text-white border-gray-700 hover:bg-gray-700 hover:text-yellow-300"
+                  ? "bg-blue-400 text-black border-black-400 shadow-md "
+                  : "bg-gray-800 text-white border-gray-700 hover:bg-gray-700 hover:text-blue-500"
               }`}
           >
             <span>{genreIcons[genre.name] || "🎞️"}</span>

@@ -202,7 +202,7 @@ const Recomandation = ({ id, type }) => {
     <>
       <h1 className="text-5xl font-extrabold text-white text-center tracking-wide mb-8 relative">
         <span className="relative z-10">Recommendation</span>
-        <span className="absolute left-1/2 -bottom-2 w-65 h-1 bg-blue-700 rounded-full transform -translate-x-1/2"></span>
+       <span className="absolute left-1/2 -bottom-2 w-32 h-1 bg-gradient-to-r from-blue-600 to-purple-700 rounded-full transform -translate-x-1/2"></span>
       </h1>
 
       <div className="slider mb-10" ref={sliderRef1}>
