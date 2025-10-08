@@ -8,9 +8,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 const Recomandation = ({ id, type }) => {
-  // const { data } = showMovie.useAllMovieQuery({
-  //   endpoint: 'movie/541671/recommendations',
-  // });
   const { data } = showMovie.useAllMovieQuery({
     endpoint: `${type}/${id}/recommendations`,
   });

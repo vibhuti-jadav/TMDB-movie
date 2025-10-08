@@ -12,16 +12,10 @@ import Footer from "./Footer";
 import Slider from "./Slider";
 
 const Discover = () => {
-  // const [lang, setLang] = useState(() => localStorage.getItem('selectedLang') || null);
-
   const [lang, setLang] = useState(() => {
     const storedLang = localStorage.getItem("selectedLang");
     return storedLang !== null ? storedLang : null;
   });
-
-  // useEffect(() => {
-  //   localStorage.setItem('selectedLang', lang);
-  // }, [lang]);
 
   useEffect(() => {
     if (lang) {
@@ -37,10 +31,6 @@ const Discover = () => {
   const [page, setPage] = useState(1);
   const [list, setList] = useState([]);
 
-  // const { data, isLoading, error } = showMovie.useAllMovieQuery({
-  //   endpoint: `discover/${type}`, page: page, lang: lang, list: list,
-  // });
-
   const query = {
     endpoint: `discover/${type}`,
     page,
@@ -48,7 +38,7 @@ const Discover = () => {
   };
 
   if (lang) {
-    query.lang = lang; // ✅ Only include if non-null
+    query.lang = lang;
   }
 
   const { data, isLoading, error } = showMovie.useAllMovieQuery(query);
@@ -65,31 +55,30 @@ const Discover = () => {
   return (
     <>
       <Navbar toggleType={handleToggleType} type={type} />
-<br />
-<br />
-<br />
-<Slider/>
+      <br />
+      <br />
+      <br />
+      <Slider />
 
       <Language
         setLang={(iso) => {
-          setLang(iso); 
-          setList([]); 
-          setPage(1); 
+          setLang(iso);
+          setList([]);
+          setPage(1);
           localStorage.setItem("selectedLang", iso);
         }}
         lang={lang}
       />
 
       <MovieGeners setList={setList} list={list} />
-      
 
-
-<h1 className="text-5xl md:text-6xl font-extrabold text-white text-center tracking-wide mb-8 relative animate-fadeIn">
-  <span className="relative z-10 drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]"> Discover</span>
-  <span className="absolute left-1/2 -bottom-2 w-32 h-1 bg-gradient-to-r from-blue-600 to-purple-700 rounded-full transform -translate-x-1/2"></span>
-</h1>
-
-      
+      <h1 className="text-5xl md:text-6xl font-extrabold text-white text-center tracking-wide mb-8 relative animate-fadeIn">
+        <span className="relative z-10 drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]">
+          {" "}
+          Discover
+        </span>
+        <span className="absolute left-1/2 -bottom-2 w-32 h-1 bg-gradient-to-r from-blue-600 to-purple-700 rounded-full transform -translate-x-1/2"></span>
+      </h1>
 
       <div className="max-w-7xl mx-auto mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {data.results.map((ele) => (
@@ -97,7 +86,7 @@ const Discover = () => {
         ))}
       </div>
       <Pagination page={page} setPage={setPage} />
-    
+
       <Recomandation id={data.results[0]?.id} type={type} />
       <Footer />
     </>

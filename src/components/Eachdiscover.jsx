@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { showMovie } from "../rtk_Querys/ShowMovieReducer/showMovie";
 import { RiPlayCircleLine } from "@remixicon/react";
-import {  useState } from "react";
+import { useState } from "react";
 import Recomandation from "./Recomandation2";
 
 const EachDiscover = () => {
@@ -24,9 +24,6 @@ const EachDiscover = () => {
   if (isError || !data)
     return <p className="text-white">Error loading movie details.</p>;
 
-  // const trailer = videoData?.results?.find(
-  //   (vid) => vid.site === 'YouTube' && vid.type === 'Trailer'
-  // );
   const trailer = videoData?.results?.find(
     (vid) =>
       vid.site === "YouTube" &&
@@ -42,7 +39,6 @@ const EachDiscover = () => {
   const closeModal = () => {
     setModalOpen(false);
   };
-
 
   return (
     <>
@@ -113,8 +109,6 @@ const EachDiscover = () => {
                     </div>
                   </div>
                 )}
-
-               
 
                 {trailer && (
                   <button

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { showMovie } from "../rtk_Querys/ShowMovieReducer/showMovie";
 import Modal from "./Modal";
 
-const API_KEY = "23f45d0d0053dccafd488246343642e2";
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
 const TvDetail = () => {
   const { id } = useParams();

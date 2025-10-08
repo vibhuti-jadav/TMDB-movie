@@ -1,6 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const API_KEY = "23f45d0d0053dccafd488246343642e2";
+// const API_KEY = "23f45d0d0053dccafd488246343642e2";
+
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+
 
 export const showMovie = createApi({
   reducerPath: "showmovie",
